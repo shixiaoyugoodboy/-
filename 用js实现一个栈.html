@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    <!--栈是一种后进先出的数据结构，新数据和准备删除的数据都在栈顶，旧数据都在栈底-->
+    function stack() {
+        var item = [];
+        this.pop = function () {
+            return item.pop();
+        };
+        this.push = function (el) {
+            return item.push(el);
+        };
+//        返回栈顶的数据
+        this.peak = function () {
+            return item[item.length-1]
+        };
+//        判断栈是否为空
+        this.isEmpty = function(){
+            return item.length == 0;
+        };
+        this.size = function(){
+            return item.length;
+        };
+//        清空栈的数据
+        this.clear = function(){
+            item = [];
+        };
+        this.print = function(){
+            console.log(item.toString());
+        };
+    }
+
+    function er(num) {
+        var stacks = new stack(),rem,str='';
+        while(num>0){
+            rem = Math.floor(num%2);
+            stacks.push(rem);
+            num = Math.floor(num/2);
+        }
+        while(!stacks.isEmpty()){
+            str+= stacks.pop();
+        }
+        return str;
+    }
+    console.log(er(233));
+</script>
+</html>
